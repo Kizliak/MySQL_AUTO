@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 
-namespace LibraryProject
+namespace GameShopMySqlTest
 {
     public class SqlConnectorHelper
     {

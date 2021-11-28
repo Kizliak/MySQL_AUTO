@@ -3,7 +3,7 @@ using System;
 using System.Data;
 using TechTalk.SpecFlow;
 
-namespace LibraryProject
+namespace GameShopMySqlTest
 {
     [Binding]
     public class DataBaseWorkSteps

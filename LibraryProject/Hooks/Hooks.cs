@@ -1,6 +1,6 @@
 ﻿using TechTalk.SpecFlow;
 
-namespace LibraryProject.Hooks
+namespace GameShopMySqlTest.Hooks
 {
     [Binding]
     public sealed class Hooks

@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace LibraryProject
+namespace GameShopMySqlTest
 {
     using TechTalk.SpecFlow;
     using System;
