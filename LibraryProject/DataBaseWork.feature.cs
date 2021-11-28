@@ -75,11 +75,12 @@ namespace GameShopMySqlTest
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("It is possible to insert data to Library DB")]
+        [NUnit.Framework.DescriptionAttribute("It is possible to insert data to GameShop DB")]
         [NUnit.Framework.CategoryAttribute("InsertData")]
         [NUnit.Framework.TestCaseAttribute("Valera", "Dron", "23", "Kyiv", null)]
-        [NUnit.Framework.TestCaseAttribute("Nikolay", "Gnida", "23", "Kyiv", null)]
-        public virtual void ItIsPossibleToInsertDataToLibraryDB(string firstName, string lastName, string age, string city, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("Nikolay", "Gnida", "25", "Kyiv", null)]
+        [NUnit.Framework.TestCaseAttribute("Sergey", "Maslov", "24", "Odessa", null)]
+        public virtual void ItIsPossibleToInsertDataToGameShopDB(string firstName, string lastName, string age, string city, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "InsertData"};
@@ -93,7 +94,7 @@ namespace GameShopMySqlTest
             argumentsOfScenario.Add("lastName", lastName);
             argumentsOfScenario.Add("age", age);
             argumentsOfScenario.Add("city", city);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is possible to insert data to Library DB", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is possible to insert data to GameShop DB", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -142,6 +143,122 @@ this.ScenarioInitialize(scenarioInfo);
                             string.Format("{0}", city)});
 #line 12
  testRunner.Then("Table contains data", ((string)(null)), table2, "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table3.AddRow(new string[] {
+                            string.Format("{0}", firstName),
+                            string.Format("{0}", lastName),
+                            string.Format("{0}", age),
+                            string.Format("{0}", city)});
+#line 15
+ testRunner.Then("I delete added row in table \"Person\"", ((string)(null)), table3, "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("It is possible to change data of row in GameShop DB")]
+        [NUnit.Framework.CategoryAttribute("ModifyData")]
+        [NUnit.Framework.TestCaseAttribute("Valera", "Dron", "23", "Kyiv", null)]
+        [NUnit.Framework.TestCaseAttribute("Nikolay", "Gnida", "25", "Kyiv", null)]
+        [NUnit.Framework.TestCaseAttribute("Sergey", "Maslov", "24", "Odessa", null)]
+        public virtual void ItIsPossibleToChangeDataOfRowInGameShopDB(string firstName, string lastName, string age, string city, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "ModifyData"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("firstName", firstName);
+            argumentsOfScenario.Add("lastName", lastName);
+            argumentsOfScenario.Add("age", age);
+            argumentsOfScenario.Add("city", city);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is possible to change data of row in GameShop DB", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 25
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 26
+ testRunner.When("I select last row of \"Person\" table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table4.AddRow(new string[] {
+                            "Evgen",
+                            "Kasimov",
+                            "39",
+                            "Kyiv"});
+#line 27
+ testRunner.Then("Last row of table contains data", ((string)(null)), table4, "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table5.AddRow(new string[] {
+                            string.Format("{0}", firstName),
+                            string.Format("{0}", lastName),
+                            string.Format("{0}", age),
+                            string.Format("{0}", city)});
+#line 30
+ testRunner.When("I replace data of last row of \"Person\" table", ((string)(null)), table5, "When ");
+#line hidden
+#line 33
+ testRunner.When("I select last row of \"Person\" table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table6.AddRow(new string[] {
+                            string.Format("{0}", firstName),
+                            string.Format("{0}", lastName),
+                            string.Format("{0}", age),
+                            string.Format("{0}", city)});
+#line 34
+ testRunner.Then("Last row of table contains data", ((string)(null)), table6, "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table7.AddRow(new string[] {
+                            "Evgen",
+                            "Kasimov",
+                            "39",
+                            "Kyiv"});
+#line 37
+ testRunner.Then("I replace data of last row in \"Person\" table to origin", ((string)(null)), table7, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Data;
+using System.Threading;
 using TechTalk.SpecFlow;
 
 namespace GameShopMySqlTest
@@ -21,24 +22,73 @@ namespace GameShopMySqlTest
         [When(@"I select whole ""(.*)"" table")]
         public void WhenISelectWholeTable(string tableName)
         {
-            string query = "SELECT * FROM Person";
+            string query = $"SELECT * FROM {tableName}";
             DataTable responseTable = _sqlHelper.MakeQuery(query);
-            ScenarioContext.Current["AuthorsTable"] = responseTable;
+            ScenarioContext.Current["PersonTable"] = responseTable;
         }
 
         [Then(@"Table contains data")]
         public void ThenTableContainsData(Table table)
         {
-            DataTable responseTable = (DataTable)ScenarioContext.Current["AuthorsTable"];
+            DataTable responseTable = (DataTable)ScenarioContext.Current["PersonTable"];
             int numOfRows = responseTable.Rows.Count;
             string addedUserFirstName = responseTable.Rows[numOfRows - 1]["FirstName"].ToString();
             string addedUserLastName = responseTable.Rows[numOfRows - 1]["LastName"].ToString();
             string addedUserAge = responseTable.Rows[numOfRows - 1]["Age"].ToString();
             string addedUserCity = responseTable.Rows[numOfRows - 1]["City"].ToString();
-            Assert.AreEqual(addedUserFirstName, table.Rows[0]["FirstName"]);
-            Assert.AreEqual(addedUserLastName, table.Rows[0]["LastName"]);
-            Assert.AreEqual(addedUserAge, table.Rows[0]["Age"]);
-            Assert.AreEqual(addedUserCity, table.Rows[0]["City"]);
+            Assert.AreEqual(table.Rows[0]["FirstName"], addedUserFirstName);
+            Assert.AreEqual(table.Rows[0]["LastName"], addedUserLastName);
+            Assert.AreEqual(table.Rows[0]["Age"], addedUserAge);
+            Assert.AreEqual(table.Rows[0]["City"], addedUserCity);
         }
+
+        [Then(@"I delete added row in table ""(.*)""")]
+        public void ThenIDeleteAddedRowInTable(string tableName, Table table)
+        {
+            string query = $"DELETE FROM {tableName} " +
+            $"WHERE FirstName = '{table.Rows[0]["FirstName"]}' AND LastName = '{table.Rows[0]["LastName"]}' AND Age = {table.Rows[0]["Age"]} AND City = '{table.Rows[0]["City"]}'";
+            _sqlHelper.MakeQuery(query);
+        }
+
+        [When(@"I select last row of ""(.*)"" table")]
+        public void WhenISelectLastRowOfTable(string tableName)
+        {
+            string query = $"SELECT TOP 1 * FROM {tableName} ORDER BY ID DESC";
+            DataTable responseTable = _sqlHelper.MakeQuery(query);
+            ScenarioContext.Current["LastRowInPersonTable"] = responseTable;
+        }
+
+        [Then(@"Last row of table contains data")]
+        public void ThenLastRowOfTableContainsData(Table table)
+        {
+            DataTable responseTable = (DataTable)ScenarioContext.Current["LastRowInPersonTable"];
+            int numOfRows = responseTable.Rows.Count;
+            string addedUserFirstName = responseTable.Rows[numOfRows - 1]["FirstName"].ToString();
+            string addedUserLastName = responseTable.Rows[numOfRows - 1]["LastName"].ToString();
+            string addedUserAge = responseTable.Rows[numOfRows - 1]["Age"].ToString();
+            string addedUserCity = responseTable.Rows[numOfRows - 1]["City"].ToString();
+            Assert.AreEqual(table.Rows[0]["FirstName"], addedUserFirstName);
+            Assert.AreEqual(table.Rows[0]["LastName"], addedUserLastName);
+            Assert.AreEqual(table.Rows[0]["Age"], addedUserAge);
+            Assert.AreEqual(table.Rows[0]["City"], addedUserCity);
+        }
+
+        [When(@"I replace data of last row of ""(.*)"" table")]
+        public void WhenIReplaceDataOfLastRowOfTable(string tableName, Table table)
+        {
+            string query = $"UPDATE {tableName} " +
+            $"SET FirstName = '{table.Rows[0]["FirstName"]}', LastName = '{table.Rows[0]["LastName"]}', Age = {table.Rows[0]["Age"]}, City = '{table.Rows[0]["City"]}'";
+            DataTable responseTable = _sqlHelper.MakeQuery(query);
+            ScenarioContext.Current["LastRowInPersonTable"] = responseTable;
+        }
+
+        [Then(@"I replace data of last row in ""(.*)"" table to origin")]
+        public void ThenIReplaceDataOfLastRowInTableToOrigin(string tableName, Table table)
+        {
+            string query = $"UPDATE {tableName} " +
+            $"SET FirstName = '{table.Rows[0]["FirstName"]}', LastName = '{table.Rows[0]["LastName"]}', Age = {table.Rows[0]["Age"]}, City = '{table.Rows[0]["City"]}'";
+            _sqlHelper.MakeQuery(query);
+        }
+
     }
 }
