@@ -42,3 +42,40 @@ Scenario Outline: It is possible to change data of row in GameShop DB
 		| Valera    | Dron     | 23  | Kyiv   |
 		| Nikolay   | Gnida    | 25  | Kyiv   |
 		| Sergey    | Maslov   | 24  | Odessa |
+
+
+		eatuFeature: DataBaseWork
+	As a user
+	I want to insert data to database
+	In order to store it and select later
+
+@InsertData
+
+
+@InsertData
+Scenario Outline:  It is possible to update Library DB data
+	When I update row in table "Person" with data
+		| FirstName   | LastName   | Age   | City   |
+		| <firstName> | <lastName> | <age> | <city> |
+	When I select whole "Person" table
+	Then Table contains updated data
+		| FirstName   | LastName   | Age   | City   |
+		| <firstName> | <lastName> | <age> | <city> |
+
+	Examples:
+		| firstName    | lastName | age | city     |
+		| Valupdateera | UpDron   | 33  | Dnepr    |
+		| UpNikolay    | daGnida  | 29  | Ternopol |
+
+@UpdateData
+Scenario: It is possible to update Order data from "Orders"
+	When I update  data in table "Orders"
+		| OrderNumber   | ProductName   | QuantityOfProduct | Total |
+		| <orderNumber> | <productName> | quantityOfProduct | total |
+	Then Table contains new data
+		| OrderNumber   | ProductName   | QuantityOfProduct | Total |
+		| <orderNumber> | <productName> | quantityOfProduct | total |
+
+	Examples:
+		| Total       | OrderId |
+		| (Total+300) | 13      |

@@ -90,5 +90,48 @@ namespace GameShopMySqlTest
             _sqlHelper.MakeQuery(query);
         }
 
+            [When(@"I update row in table ""(.*)"" with data")]
+            public void WhenIUpdateRowInTableWithData(string p0, Table table)
+            
+            {
+                int totalUpdateBy = 300;
+                int quantityOfProduct;
+                string query = $"UPDATE Orders Set Total = Total + {totalUpdateBy} WHERE OrderID = {13}";
+                DataTable responseTable = _sqlHelper.MakeQuery(query);
+                Assert.AreEqual(responseTable, table);
+            }
+
+       
+        [Then(@"Table contains updated data")]
+   public void ThenTableContainsUpdatedData() => Assert.That(ReferenceEquals(_sqlHelper, ScenarioContext.Current));
+
+
+        [When(@"I update  data in table ""(.*)""")]
+        public void WhenIUpdateDataInTable(string p0, Table table)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [Then(@"Table contains new data")]
+        public void ThenTableContainsNewData(Table table)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+
+        [Then(@"Table contains updated data")]
+        public void ThenTableContainsUpdatedData(Table table)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+     }
+
+      
+      
+
     }
-}
+
+
+
+  
