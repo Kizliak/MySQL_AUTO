@@ -49,6 +49,7 @@ namespace GameShopMySqlTest
             Assert.AreEqual(addedTotal, table.Rows[0]["Total"]);
         }
 
+
         //[When(@"I delete last rows in table ""(.*)""")]
         //public void WhenIDeleteLastRowsInTable(string tableName)
         //{
