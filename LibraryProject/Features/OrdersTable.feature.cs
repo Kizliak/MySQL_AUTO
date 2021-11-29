@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace GameShopMySqlTest
+namespace GameShopMySqlTest.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,22 +20,22 @@ namespace GameShopMySqlTest
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("DataBaseWork")]
-    public partial class DataBaseWorkFeature
+    [NUnit.Framework.DescriptionAttribute("DataBaseOrderTableWork")]
+    public partial class DataBaseOrderTableWorkFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "DataBaseWork.feature"
+#line 1 "OrdersTable.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "DataBaseWork", "\tAs a user\r\n\tI want to insert data to database\r\n\tIn order to store it and select " +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "DataBaseOrderTableWork", "\tAs a user\r\n\tI want to insert data to database\r\n\tIn order to store it and select " +
                     "later", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -75,25 +75,26 @@ namespace GameShopMySqlTest
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("It is possible to insert data to Library DB")]
-        [NUnit.Framework.CategoryAttribute("InsertData")]
-        [NUnit.Framework.TestCaseAttribute("Valera", "Dron", "23", "Kyiv", null)]
-        [NUnit.Framework.TestCaseAttribute("Nikolay", "Gnida", "23", "Kyiv", null)]
-        public virtual void ItIsPossibleToInsertDataToLibraryDB(string firstName, string lastName, string age, string city, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("It is possible to insert data to GameStore DB")]
+        [NUnit.Framework.CategoryAttribute("InsertDataInOrdersTable")]
+        [NUnit.Framework.TestCaseAttribute("21", "Assassin Creed Valhalla", "2", "100.0000", null)]
+        [NUnit.Framework.TestCaseAttribute("22", "Daemon X Machina", "0", "0.0000", null)]
+        [NUnit.Framework.TestCaseAttribute("0", "0", "0", "0.0000", null)]
+        public virtual void ItIsPossibleToInsertDataToGameStoreDB(string orderNumber, string productName, string quantityOfProduct, string total, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "InsertData"};
+                    "InsertDataInOrdersTable"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("firstName", firstName);
-            argumentsOfScenario.Add("lastName", lastName);
-            argumentsOfScenario.Add("age", age);
-            argumentsOfScenario.Add("city", city);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is possible to insert data to Library DB", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            argumentsOfScenario.Add("orderNumber", orderNumber);
+            argumentsOfScenario.Add("productName", productName);
+            argumentsOfScenario.Add("quantityOfProduct", quantityOfProduct);
+            argumentsOfScenario.Add("total", total);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is possible to insert data to GameStore DB", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -114,34 +115,34 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "FirstName",
-                            "LastName",
-                            "Age",
-                            "City"});
-                table1.AddRow(new string[] {
-                            string.Format("{0}", firstName),
-                            string.Format("{0}", lastName),
-                            string.Format("{0}", age),
-                            string.Format("{0}", city)});
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "OrderNumber",
+                            "ProductName",
+                            "QuantityOfProduct",
+                            "Total"});
+                table3.AddRow(new string[] {
+                            string.Format("{0}", orderNumber),
+                            string.Format("{0}", productName),
+                            string.Format("{0}", quantityOfProduct),
+                            string.Format("{0}", total)});
 #line 8
- testRunner.When("I create row in table \"Person\" with data", ((string)(null)), table1, "When ");
+ testRunner.When("I create row in \"Orders\" table with data", ((string)(null)), table3, "When ");
 #line hidden
 #line 11
- testRunner.When("I select whole \"Person\" table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I select whole table  \"Orders\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                            "FirstName",
-                            "LastName",
-                            "Age",
-                            "City"});
-                table2.AddRow(new string[] {
-                            string.Format("{0}", firstName),
-                            string.Format("{0}", lastName),
-                            string.Format("{0}", age),
-                            string.Format("{0}", city)});
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "OrderNumber",
+                            "ProductName",
+                            "QuantityOfProduct",
+                            "Total"});
+                table4.AddRow(new string[] {
+                            string.Format("{0}", orderNumber),
+                            string.Format("{0}", productName),
+                            string.Format("{0}", quantityOfProduct),
+                            string.Format("{0}", total)});
 #line 12
- testRunner.Then("Table contains data", ((string)(null)), table2, "Then ");
+ testRunner.Then("Table contains this data", ((string)(null)), table4, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

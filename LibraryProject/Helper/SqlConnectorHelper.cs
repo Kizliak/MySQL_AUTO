@@ -9,7 +9,7 @@ namespace GameShopMySqlTest
 
         public void ConnectToDataBase()
         {
-            connection = new SqlConnection("Server = DESKTOP-LE79157\\SQLEXPRESS01; Database = gamestore2; Integrated Security = true");
+            connection = new SqlConnection("Server = DESKTOP-G6IS2T2\\SQLEXPRESS; Database = GameStore; Integrated Security = true");
             this.connection.Open();
         }
 

@@ -4,7 +4,7 @@
 	In order to store it and select later
 
 @InsertData
-Scenario Outline:  It is possible to insert data to Library DB
+Scenario Outline: It is possible to insert data to Library DB
 	When I create row in table "Person" with data
 		| FirstName   | LastName   | Age   | City   |
 		| <firstName> | <lastName> | <age> | <city> |
